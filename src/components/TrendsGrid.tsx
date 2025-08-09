@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp, Database, Leaf } from 'lucide-react';
 
@@ -56,9 +57,11 @@ const TrendsGrid = () => {
                   <div className="w-16 h-1 bg-accent/20 rounded-full">
                     <div className="w-3/4 h-full bg-accent rounded-full"></div>
                   </div>
-                  <button className="text-xs text-accent hover:text-accent-hover font-medium">
-                    Read more →
-                  </button>
+                  <Link to={`/trend/${trend.id}`}>
+                    <button className="text-xs text-accent hover:text-accent-hover font-medium">
+                      Read more →
+                    </button>
+                  </Link>
                 </div>
               </CardContent>
             </div>

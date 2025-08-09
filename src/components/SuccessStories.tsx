@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Building2, Users, TrendingUp } from 'lucide-react';
@@ -37,51 +38,57 @@ const SuccessStories = () => {
   return (
     <div className="grid md:grid-cols-3 gap-6">
       {stories.map((story) => (
-        <Card key={story.id} className="card-primary hover:shadow-md transition-all duration-200">
-          <div className="relative">
-            <img
-              src={story.image}
-              alt={story.company}
-              className="w-full h-40 object-cover rounded-t-[var(--radius)]"
-              onError={(e) => {
-                e.currentTarget.src = 'https://via.placeholder.com/300x200/f1f5f9/64748b?text=Success+Story';
-              }}
-            />
-            <div className="absolute top-4 left-4">
-              <div className="bg-card/90 backdrop-blur-sm rounded-full p-2">
-                <story.icon className="h-4 w-4 text-accent" />
+        <Link key={story.id} to={`/story/${story.id}`}>
+          <Card className="card-primary hover:shadow-md transition-all duration-200 group cursor-pointer">
+            <div className="relative">
+              <img
+                src={story.image}
+                alt={story.company}
+                className="w-full h-40 object-cover rounded-t-[var(--radius)]"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://via.placeholder.com/300x200/f1f5f9/64748b?text=Success+Story';
+                }}
+              />
+              <div className="absolute top-4 left-4">
+                <div className="bg-card/90 backdrop-blur-sm rounded-full p-2">
+                  <story.icon className="h-4 w-4 text-accent" />
+                </div>
               </div>
             </div>
-          </div>
-          
-          <CardHeader>
-            <div className="flex items-center justify-between mb-2">
-              <CardTitle className="text-lg">{story.company}</CardTitle>
-              <Badge variant="secondary" className="text-xs">
-                {story.type}
-              </Badge>
-            </div>
-          </CardHeader>
-          
-          <CardContent className="pt-0">
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-              {story.story}
-            </p>
             
-            <div className="grid grid-cols-3 gap-2 text-center">
-              {Object.entries(story.metrics).map(([key, value]) => (
-                <div key={key} className="p-2 bg-muted/30 rounded-md">
-                  <div className="text-sm font-semibold text-accent">
-                    {value}
+            <CardHeader>
+              <div className="flex items-center justify-between mb-2">
+                <CardTitle className="text-lg group-hover:text-primary transition-colors">{story.company}</CardTitle>
+                <Badge variant="secondary" className="text-xs">
+                  {story.type}
+                </Badge>
+              </div>
+            </CardHeader>
+            
+            <CardContent className="pt-0">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                {story.story}
+              </p>
+              
+              <div className="grid grid-cols-3 gap-2 text-center">
+                {Object.entries(story.metrics).map(([key, value]) => (
+                  <div key={key} className="p-2 bg-muted/30 rounded-md">
+                    <div className="text-sm font-semibold text-accent">
+                      {value}
+                    </div>
+                    <div className="text-xs text-muted-foreground capitalize">
+                      {key}
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground capitalize">
-                    {key}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+                ))}
+              </div>
+              
+              <div className="mt-4 text-xs text-accent group-hover:text-accent-hover font-medium">
+                Read full story →
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       ))}
     </div>
   );

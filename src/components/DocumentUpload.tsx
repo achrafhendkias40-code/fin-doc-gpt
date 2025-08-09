@@ -89,8 +89,22 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({ onFileUpload, uploadedF
             <Textarea
               placeholder="Paste your document text here..."
               className="min-h-[120px] resize-none"
+              id="document-text"
             />
-            <Button className="w-full" variant="outline">
+            <Button 
+              className="w-full" 
+              variant="outline"
+              onClick={() => {
+                const textArea = document.getElementById('document-text') as HTMLTextAreaElement;
+                if (textArea?.value.trim()) {
+                  // Create a virtual file from the text content
+                  const textBlob = new Blob([textArea.value], { type: 'text/plain' });
+                  const textFile = new File([textBlob], 'document.txt', { type: 'text/plain' });
+                  onFileUpload(textFile);
+                  textArea.value = '';
+                }
+              }}
+            >
               <Type className="mr-2 h-4 w-4" />
               Process Text
             </Button>

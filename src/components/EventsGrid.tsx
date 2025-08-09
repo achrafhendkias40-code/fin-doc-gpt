@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, ExternalLink } from 'lucide-react';
@@ -61,10 +62,10 @@ const EventsGrid = () => {
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">
               {event.summary}
             </p>
-            <div className="flex items-center text-xs text-accent hover:text-accent-hover">
+            <Link to={`/event/${event.id}`} className="flex items-center text-xs text-accent hover:text-accent-hover">
               <ExternalLink className="h-3 w-3 mr-1" />
               Read more
-            </div>
+            </Link>
           </CardContent>
         </Card>
       ))}

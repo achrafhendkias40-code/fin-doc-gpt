@@ -8,6 +8,9 @@ import Auth from "./pages/Auth";
 import Username from "./pages/Username";
 import Dashboard from "./pages/Dashboard";
 import DocumentAnalysis from "./pages/DocumentAnalysis";
+import TrendDetail from "./pages/TrendDetail";
+import EventDetail from "./pages/EventDetail";
+import StoryDetail from "./pages/StoryDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/username" element={<Username />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/analysis" element={<DocumentAnalysis />} />
+          <Route path="/trend/:id" element={<TrendDetail />} />
+          <Route path="/event/:id" element={<EventDetail />} />
+          <Route path="/story/:id" element={<StoryDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -8,6 +8,7 @@ import TrendsGrid from '@/components/TrendsGrid';
 import EventsGrid from '@/components/EventsGrid';
 import SuccessStories from '@/components/SuccessStories';
 import RecentActivity from '@/components/RecentActivity';
+import logoImage from '@/assets/findocgpt-logo.png';
 
 const Dashboard = () => {
   const username = localStorage.getItem('username') || 'User';
@@ -19,9 +20,12 @@ const Dashboard = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                FinDocGPT
-              </h1>
+              <div className="flex items-center gap-3">
+                <img src={logoImage} alt="FinDocGPT" className="h-8" />
+                <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                  FinDocGPT
+                </h1>
+              </div>
               <div className="hidden sm:block h-6 w-px bg-border" />
               <span className="hidden sm:inline text-sm text-muted-foreground">
                 v1.0 • Secure
